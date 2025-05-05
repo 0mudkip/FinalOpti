@@ -8,13 +8,16 @@ from gradiente import descenso_gradiente_simple, descenso_gradiente_momentum, de
 #imagen = imread('prueba2.jpg', as_gray=True)
 imagen = imread('prueba3.jpg', as_gray=True)
 imagen = img_as_float(imagen)
-nivel_ruido = 0.25
+imagen = imagen*255
+nivel_ruido = 20
 ruido = np.random.normal(0, nivel_ruido, imagen.shape)
 imagen_ruidosa = imagen + ruido
-imagen_ruidosa = np.clip(imagen_ruidosa, 0, 1)
+
+plt.imshow(ruido, cmap='gray')
+plt.show()
 
 
-lambda_param = 0.5  
+lambda_param = 0.1  
 alpha = 0.1 
 beta = 0.9  # Momentum
 num_iter = 10000  # Número de iteraciones
