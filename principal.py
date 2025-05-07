@@ -9,7 +9,7 @@ from gradiente import descenso_gradiente_simple, descenso_gradiente_momentum, de
 imagen = imread('prueba3.jpg', as_gray=True)
 imagen = img_as_float(imagen)
 imagen = imagen*255
-nivel_ruido = 20
+nivel_ruido = 50
 ruido = np.random.normal(0, nivel_ruido, imagen.shape)
 imagen_ruidosa = imagen + ruido
 
