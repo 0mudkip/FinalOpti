@@ -1,9 +1,8 @@
-# main.py
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 from skimage import img_as_float
-from psnr import psnr  # Importar la función psnr desde el archivo psnr.py
+from psnr import psnr  
 from gradiente import descenso_gradiente_simple, descenso_gradiente_momentum, descenso_gradiente_nesterov
 
 # Cargar la imagen
@@ -32,14 +31,13 @@ alpha = 0.1
 beta = 0.9  # Momentum
 num_iter = 10000  # Número de iteraciones
 
-# Mostrar resultados para nivel de ruido 10
+#Mandar a llamar funciones de gradiente
 u_inicial_10 = np.copy(imagen_ruidosa_10)
-
 u_simple_10 = descenso_gradiente_simple(u_inicial_10, imagen_ruidosa_10, lambda_param, alpha, num_iter)
 u_momentum_10 = descenso_gradiente_momentum(u_inicial_10, imagen_ruidosa_10, lambda_param, alpha, beta, num_iter)
 u_nesterov_10 = descenso_gradiente_nesterov(u_inicial_10, imagen_ruidosa_10, lambda_param, alpha, beta, num_iter)
 
-# Calcular PSNR para el nivel de ruido 10
+# Calcular PSNR 
 psnr_simple_10 = psnr(imagen, u_simple_10)
 psnr_momentum_10 = psnr(imagen, u_momentum_10)
 psnr_nesterov_10 = psnr(imagen, u_nesterov_10)
@@ -48,14 +46,13 @@ print(f"PSNR (Gradiente Simple) - Nivel 10: {psnr_simple_10} dB")
 print(f"PSNR (Momentum) - Nivel 10: {psnr_momentum_10} dB")
 print(f"PSNR (Nesterov) - Nivel 10: {psnr_nesterov_10} dB")
 
-# Mostrar resultados para nivel de ruido 20
-u_inicial_20 = np.copy(imagen_ruidosa_20)
 
+u_inicial_20 = np.copy(imagen_ruidosa_20)
 u_simple_20 = descenso_gradiente_simple(u_inicial_20, imagen_ruidosa_20, lambda_param, alpha, num_iter)
 u_momentum_20 = descenso_gradiente_momentum(u_inicial_20, imagen_ruidosa_20, lambda_param, alpha, beta, num_iter)
 u_nesterov_20 = descenso_gradiente_nesterov(u_inicial_20, imagen_ruidosa_20, lambda_param, alpha, beta, num_iter)
 
-# Calcular PSNR para el nivel de ruido 20
+# Calcular PSNR 
 psnr_simple_20 = psnr(imagen, u_simple_20)
 psnr_momentum_20 = psnr(imagen, u_momentum_20)
 psnr_nesterov_20 = psnr(imagen, u_nesterov_20)
@@ -64,14 +61,13 @@ print(f"PSNR (Gradiente Simple) - Nivel 20: {psnr_simple_20} dB")
 print(f"PSNR (Momentum) - Nivel 20: {psnr_momentum_20} dB")
 print(f"PSNR (Nesterov) - Nivel 20: {psnr_nesterov_20} dB")
 
-# Mostrar resultados para nivel de ruido 50
-u_inicial_50 = np.copy(imagen_ruidosa_50)
 
+u_inicial_50 = np.copy(imagen_ruidosa_50)
 u_simple_50 = descenso_gradiente_simple(u_inicial_50, imagen_ruidosa_50, lambda_param, alpha, num_iter)
 u_momentum_50 = descenso_gradiente_momentum(u_inicial_50, imagen_ruidosa_50, lambda_param, alpha, beta, num_iter)
 u_nesterov_50 = descenso_gradiente_nesterov(u_inicial_50, imagen_ruidosa_50, lambda_param, alpha, beta, num_iter)
 
-# Calcular PSNR para el nivel de ruido 50
+# Calcular PSNR 
 psnr_simple_50 = psnr(imagen, u_simple_50)
 psnr_momentum_50 = psnr(imagen, u_momentum_50)
 psnr_nesterov_50 = psnr(imagen, u_nesterov_50)
@@ -80,7 +76,7 @@ print(f"PSNR (Gradiente Simple) - Nivel 50: {psnr_simple_50} dB")
 print(f"PSNR (Momentum) - Nivel 50: {psnr_momentum_50} dB")
 print(f"PSNR (Nesterov) - Nivel 50: {psnr_nesterov_50} dB")
 
-# Mostrar gráficas para nivel de ruido 10
+#creación de gráficas
 plt.figure(figsize=(15, 10))
 plt.subplot(2, 3, 1)
 plt.title('Imagen Original - Nivel 10')
@@ -109,7 +105,7 @@ plt.axis('off')
 
 plt.show()
 
-# Mostrar gráficas para nivel de ruido 20
+
 plt.figure(figsize=(15, 10))
 plt.subplot(2, 3, 1)
 plt.title('Imagen Original - Nivel 20')
@@ -138,7 +134,7 @@ plt.axis('off')
 
 plt.show()
 
-# Mostrar gráficas para nivel de ruido 50
+
 plt.figure(figsize=(15, 10))
 plt.subplot(2, 3, 1)
 plt.title('Imagen Original - Nivel 50')
